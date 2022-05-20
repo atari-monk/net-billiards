@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <!-- Debug refs -->
+	<!-- <ItemGroup>
+		<Reference Include="Vector.Lib">
+			<HintPath>..\..\vector-lib\Vector.Lib\bin\Debug\net6.0\Vector.Lib.dll</HintPath>
+		</Reference>
+        <Reference Include="Sim.Core">
+			<HintPath>..\..\sim-core\Sim.Core\bin\Debug\net6.0\Sim.Core.dll</HintPath>
+		</Reference>
+	</ItemGroup> -->
+
+	<!-- Release refs -->
+	<ItemGroup>
+		<Reference Include="Vector.Lib">
+			<HintPath>..\..\..\Build\vector-lib\Vector.Lib\Vector.Lib.dll</HintPath>
+		</Reference>
+        <Reference Include="Sim.Core">
+			<HintPath>..\..\..\Build\sim-core\Sim.Core\Sim.Core.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+</Project>

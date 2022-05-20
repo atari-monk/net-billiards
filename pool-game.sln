@@ -7,6 +7,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pool.Physic", "Pool.Physic\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pool.Logic", "Pool.Logic\Pool.Logic.csproj", "{23E375F6-BA3B-42F8-A6C8-16D124DECD3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoolGameApp.WpfLib.Controls", "PoolGameApp.WpfLib.Controls\PoolGameApp.WpfLib.Controls.csproj", "{A1132A0A-B633-433B-A442-E9E697631E8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pool.Engine", "Pool.Engine\Pool.Engine.csproj", "{32E26D53-495F-417C-AE2E-1A946B849497}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoolGameApp.Resources", "PoolGameApp.Resources\PoolGameApp.Resources.csproj", "{B5E6DCB5-FF6F-48D3-A046-951E39022283}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoolGameApp.WpfLib.Containers", "PoolGameApp.WpfLib.Containers\PoolGameApp.WpfLib.Containers.csproj", "{E99B4397-07CB-4323-A271-C8E1E0E8F34C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoolGameApp.WpfApp", "PoolGameApp.WpfApp\PoolGameApp.WpfApp.csproj", "{D266A5A0-1A83-47C9-941E-74AB8E6BF066}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +34,25 @@ Global
 		{23E375F6-BA3B-42F8-A6C8-16D124DECD3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23E375F6-BA3B-42F8-A6C8-16D124DECD3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23E375F6-BA3B-42F8-A6C8-16D124DECD3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1132A0A-B633-433B-A442-E9E697631E8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1132A0A-B633-433B-A442-E9E697631E8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1132A0A-B633-433B-A442-E9E697631E8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1132A0A-B633-433B-A442-E9E697631E8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32E26D53-495F-417C-AE2E-1A946B849497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32E26D53-495F-417C-AE2E-1A946B849497}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32E26D53-495F-417C-AE2E-1A946B849497}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32E26D53-495F-417C-AE2E-1A946B849497}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5E6DCB5-FF6F-48D3-A046-951E39022283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5E6DCB5-FF6F-48D3-A046-951E39022283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5E6DCB5-FF6F-48D3-A046-951E39022283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5E6DCB5-FF6F-48D3-A046-951E39022283}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E99B4397-07CB-4323-A271-C8E1E0E8F34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E99B4397-07CB-4323-A271-C8E1E0E8F34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E99B4397-07CB-4323-A271-C8E1E0E8F34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E99B4397-07CB-4323-A271-C8E1E0E8F34C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D266A5A0-1A83-47C9-941E-74AB8E6BF066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D266A5A0-1A83-47C9-941E-74AB8E6BF066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D266A5A0-1A83-47C9-941E-74AB8E6BF066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D266A5A0-1A83-47C9-941E-74AB8E6BF066}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
