@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Unity" Version="5.11.10" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Pool.Container\Pool.Container.csproj" />
+    </ItemGroup>
+
+    <!-- Release refs -->
+	<ItemGroup>
+		<Reference Include="Vector.Lib">
+			<HintPath>..\..\..\Build\vector-lib\Vector.Lib\Vector.Lib.dll</HintPath>
+		</Reference>
+        <Reference Include="Sim.Core">
+			<HintPath>..\..\..\Build\sim-core\Sim.Core\Sim.Core.dll</HintPath>
+		</Reference>
+        <Reference Include="Canvas">
+			<HintPath>..\..\..\Build\canvas\Canvas\Canvas.dll</HintPath>
+		</Reference>
+        <Reference Include="Shape.Model">
+			<HintPath>..\..\..\Build\shape-model\Shape.Model\Shape.Model.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+</Project>
