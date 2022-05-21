@@ -1,0 +1,22 @@
+﻿<UserControl 
+	x:Class="Pool.Control.WallboardView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:MyUserControls="clr-namespace:Pool.Control"
+    mc:Ignorable="d" 
+    d:DesignHeight="450" d:DesignWidth="800">
+    <Grid 
+		x:Name="RootLayout" 
+		Background="Green">
+        <TabControl>
+            <TabItem Header="Game">
+                <MyUserControls:GameWallboardView x:Name="GameWallboard"/>
+            </TabItem>
+            <TabItem Header="Physics">
+                
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

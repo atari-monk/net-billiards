@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+	<Nullable>enable</Nullable>
+	<ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="GameView.xaml.cs">
+      <DependentUpon>GameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="GameWallboardView.xaml.cs">
+      <DependentUpon>GameWallboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="WallboardView.xaml.cs">
+      <DependentUpon>WallboardView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="GameView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GameWallboardView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resource.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WallboardView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+      <!-- Debug refs -->
+	<!-- <ItemGroup>
+		<Reference Include="Vector.Lib">
+			<HintPath>..\..\vector-lib\Vector.Lib\bin\Debug\net6.0\Vector.Lib.dll</HintPath>
+		</Reference>
+        <Reference Include="Sim.Core">
+			<HintPath>..\..\sim-core\Sim.Core\bin\Debug\net6.0\Sim.Core.dll</HintPath>
+		</Reference>
+	</ItemGroup> -->
+
+	<!-- Release refs -->
+	<ItemGroup>
+		<Reference Include="Vector.Lib">
+			<HintPath>..\..\..\Build\vector-lib\Vector.Lib\Vector.Lib.dll</HintPath>
+		</Reference>
+        <Reference Include="Sim.Core">
+			<HintPath>..\..\..\Build\sim-core\Sim.Core\Sim.Core.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+</Project>
