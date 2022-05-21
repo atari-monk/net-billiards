@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Pool.Container;
+using Sim.Core;
 using Unity;
 
 namespace Pool.App;
@@ -7,26 +8,32 @@ namespace Pool.App;
 public partial class App
 	: Application
 {
-	private void ApplicationStartup(object sender, StartupEventArgs e)
+	private void ApplicationStartup(
+        object sender
+        , StartupEventArgs e)
 	{
 		BuildByContainer();
 		//BuildByFactory();
 	}
 
 	private void BuildByFactory()
-	{
-		var gameFactory = new GameFactory();
-		var gameView = gameFactory.Order();
-		MainWindow = gameView as Window;
-		MainWindow.Show();
-	}
+    {
+        SetAndShowGameWindow(
+            new GameFactory().Order());
+    }
 
-	private void BuildByContainer()
+    private void SetAndShowGameWindow(
+        IGameView gameView)
+    {
+        MainWindow = gameView as Window;
+        ArgumentNullException.ThrowIfNull(MainWindow);
+        MainWindow.Show();
+    }
+
+    private void BuildByContainer()
 	{
-		var container = new UnityContainer();
-		var gameContainer = new GameContainer(container);
-		var gameView = gameContainer.Order();
-		MainWindow = gameView as Window;
-		MainWindow.Show();
+        SetAndShowGameWindow(
+            new GameContainer(
+                new UnityContainer()).Order());
 	}
 }
