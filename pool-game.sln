@@ -7,15 +7,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pool.Physic", "Pool.Physic\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pool.Logic", "Pool.Logic\Pool.Logic.csproj", "{23E375F6-BA3B-42F8-A6C8-16D124DECD3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoolGameApp.WpfLib.Controls", "PoolGameApp.WpfLib.Controls\PoolGameApp.WpfLib.Controls.csproj", "{A1132A0A-B633-433B-A442-E9E697631E8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pool.Control", "Pool.Control\Pool.Control.csproj", "{A1132A0A-B633-433B-A442-E9E697631E8B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pool.Engine", "Pool.Engine\Pool.Engine.csproj", "{32E26D53-495F-417C-AE2E-1A946B849497}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoolGameApp.Resources", "PoolGameApp.Resources\PoolGameApp.Resources.csproj", "{B5E6DCB5-FF6F-48D3-A046-951E39022283}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pool.Resource", "Pool.Resource\Pool.Resource.csproj", "{B5E6DCB5-FF6F-48D3-A046-951E39022283}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoolGameApp.WpfLib.Containers", "PoolGameApp.WpfLib.Containers\PoolGameApp.WpfLib.Containers.csproj", "{E99B4397-07CB-4323-A271-C8E1E0E8F34C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pool.Container", "Pool.Container\Pool.Container.csproj", "{E99B4397-07CB-4323-A271-C8E1E0E8F34C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoolGameApp.WpfApp", "PoolGameApp.WpfApp\PoolGameApp.WpfApp.csproj", "{D266A5A0-1A83-47C9-941E-74AB8E6BF066}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pool.App", "Pool.App\Pool.App.csproj", "{D266A5A0-1A83-47C9-941E-74AB8E6BF066}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
