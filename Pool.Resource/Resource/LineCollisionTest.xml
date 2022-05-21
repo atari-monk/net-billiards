@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<ShapeContext xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Circle>
+    <TextFlag>white</TextFlag>
+    <Context>Physic</Context>
+    <Color>
+      <A>0</A>
+      <R>0</R>
+      <G>0</G>
+      <B>0</B>
+      <ScA>1</ScA>
+      <ScR>1</ScR>
+      <ScG>0</ScG>
+      <ScB>0</ScB>
+    </Color>
+    <MassCenter>
+      <X>648</X>
+      <Y>420</Y>
+    </MassCenter>
+    <Velocity>
+      <X>0</X>
+      <Y>0</Y>
+    </Velocity>
+    <IsColorFilled>true</IsColorFilled>
+    <Mass>10</Mass>
+    <RelativeImagePath />
+    <Radius>20</Radius>
+  </Circle>
+  <Line>
+    <Context>Physic</Context>
+    <Color>
+      <A>0</A>
+      <R>0</R>
+      <G>0</G>
+      <B>0</B>
+      <ScA>1</ScA>
+      <ScR>1</ScR>
+      <ScG>0</ScG>
+      <ScB>0</ScB>
+    </Color>
+    <MassCenter>
+      <X>600</X>
+      <Y>682</Y>
+    </MassCenter>
+    <Velocity>
+      <X>0</X>
+      <Y>0</Y>
+    </Velocity>
+    <IsColorFilled>true</IsColorFilled>
+    <Mass>10</Mass>
+    <RelativeImagePath />
+    <SecondPoint>
+      <X>600</X>
+      <Y>168</Y>
+    </SecondPoint>
+  </Line>
+</ShapeContext>

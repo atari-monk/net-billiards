@@ -1,0 +1,1 @@
+Copy GameData floder content to "C:\Tests\Game" please, so that images will be in "C:\Tests\Game\Images" and game shapes in "C:\Tests\Game".
