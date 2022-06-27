@@ -5,37 +5,37 @@ namespace Pool.Control;
 public class RescaleViewModel
 	: SizeViewModel
 {
-	private double _xScale;
-	private double _yScale;
-	private readonly IConfigProvider _configProvider;
+	private double xScale;
+	private double yScale;
+	private readonly IConfigProvider configProvider;
 
 	public double XScale
 	{
-		get => _xScale;
+		get => xScale;
 
 		set
 		{
-			_xScale = value;
+			xScale = value;
 			OnPropertyChanged(nameof(XScale));
 		}
 	}
 
 	public double YScale
 	{
-		get => _yScale;
+		get => yScale;
 
 		set
 		{
-			_yScale = value;
+			yScale = value;
 			OnPropertyChanged(nameof(YScale));
 		}
 	}
 
 	public RescaleViewModel(IConfigProvider configProvider)
 	{
-		_configProvider = configProvider;
-		Width = int.Parse(_configProvider.ReadSetting(nameof(Width)));
-		Height = int.Parse(_configProvider.ReadSetting(nameof(Height)));
+		this.configProvider = configProvider;
+        Width = int.Parse(this.configProvider.ReadSetting(nameof(Width)));
+        Height = int.Parse(this.configProvider.ReadSetting(nameof(Height)));
 		DefaultScale();
 	}
 

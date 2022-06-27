@@ -5,10 +5,10 @@ namespace Pool.Control;
 public class StatsViewModel
 	: ViewModel
 {
-	private string fps;
-	private string time;
+	private string? fps;
+	private string? time;
 
-	public string Fps
+	public string? Fps
 	{
 		get => fps;
 		set
@@ -18,7 +18,7 @@ public class StatsViewModel
 		}
 	}
 
-	public string Time
+	public string? Time
 	{
 		get => time;
 		set

@@ -8,8 +8,8 @@ public partial class GameView
 	: Window
 		, IGameView
 {
-	private readonly IGameLoop _game;
-	private readonly ILoggerToMemory _logger;
+	private readonly IGameLoop game;
+	private readonly ILoggerToMemory logger;
 
 	public ICanvasVisualControl<IShape> CanvasVisualControl { get; }
 
@@ -19,14 +19,14 @@ public partial class GameView
 		, ILoggerToMemory logger
 		, GameViewModel gameViewModel)
 	{
-		_game = game;
+		this.game = game;
 		CanvasVisualControl = canvasVisualControl;
-		_logger = logger;
+		this.logger = logger;
 		InitializeComponent();
 		var uiElements = CanvasVisualControl as UIElement;
 		RootLayout.Children.Add(uiElements);
-		uiElements.SetValue(Grid.RowProperty, 1);
-		Wallboard.GameWallboard.CreateGameComponents(_logger.LogContent);
+		uiElements?.SetValue(Grid.RowProperty, 1);
+        Wallboard.GameWallboard.CreateGameComponents(this.logger.LogContent);
 		DataContext = gameViewModel; 
 	}
 
@@ -39,12 +39,7 @@ public partial class GameView
 		thread.Start();
 	}
 
-	private void RunGameLoop() => _game.RunGameLoop();
-
-	//public void SetLabel(Labels labelKey, string text)
-	//{
-	//	Wallboard.GameWallboard.SetLabel(labelKey, text);
-	//}
+	private void RunGameLoop() => game.RunGameLoop();
 
 	private void WindowSizeChanged(object sender, SizeChangedEventArgs e)
 	{

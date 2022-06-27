@@ -5,13 +5,13 @@ namespace Pool.Control;
 public class PlayerViewModel
 	: ViewModel
 {
-	private string name;
-	private string state;
-	private string color;
-	private string faul;
-	private string score;
+	private string? name;
+	private string? state;
+	private string? color;
+	private string? faul;
+	private string? score;
 
-	public string Name
+	public string? Name
 	{
 		get => name; 
 		set
@@ -21,7 +21,7 @@ public class PlayerViewModel
 		}
 	}
 
-	public string State
+	public string? State
 	{
 		get => state; 
 		set
@@ -31,7 +31,7 @@ public class PlayerViewModel
 		}
 	}
 
-	public string Color
+	public string? Color
 	{
 		get => color;
 		set
@@ -41,7 +41,7 @@ public class PlayerViewModel
 		}
 	}
 
-	public string Faul
+	public string? Faul
 	{
 		get => faul;
 		set
@@ -51,7 +51,7 @@ public class PlayerViewModel
 		}
 	}
 
-	public string Score
+	public string? Score
 	{
 		get => score;
 		set

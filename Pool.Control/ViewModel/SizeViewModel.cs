@@ -3,27 +3,27 @@
 public class SizeViewModel
 	: ViewModel
 {
-	private int _height;
-	private int _width;
+	private int height;
+	private int width;
 
 	public int Height
 	{
-		get => _height;
+		get => height;
 
 		set
 		{
-			_height = value;
+			height = value;
 			OnPropertyChanged(nameof(Height));
 		}
 	}
 
 	public int Width
 	{
-		get => _width;
+		get => width;
 
 		set
 		{
-			_width = value;
+			width = value;
 			OnPropertyChanged(nameof(Width));
 		}
 	}

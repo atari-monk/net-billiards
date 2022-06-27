@@ -1,6 +1,4 @@
 ﻿using Sim.Core;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
 
@@ -9,7 +7,7 @@ namespace Pool.Control;
 public partial class GameWallboardView
 	: UserControl
 {
-	private Dictionary<Labels, Label> _labels;
+	private Dictionary<Labels, Label>? labels;
 
 	public GameWallboardView()
 	{
@@ -18,7 +16,7 @@ public partial class GameWallboardView
 
 	public void CreateGameComponents(ObservableCollection<string> log)
 	{
-		_labels = new Dictionary<Labels, Label>
+		labels = new Dictionary<Labels, Label>
 		{
 			{ Labels.GameState, Player1StateLabel }
 			, { Labels.Faul, Player2FaulLabel }
@@ -32,7 +30,7 @@ public partial class GameWallboardView
 
 	public void SetLabel(Labels labelKey, string text)
 	{
-		var label = _labels[labelKey];
-		label.Dispatcher.BeginInvoke((Action)(() => label.Content = text));
+		var label = labels?[labelKey];
+		label?.Dispatcher.BeginInvoke((Action)(() => label.Content = text));
 	}
 }

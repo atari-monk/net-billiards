@@ -1,29 +1,33 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace Pool.Control;
 
 public class RelayCommand
 	: ICommand
 {
-	public event EventHandler CanExecuteChanged;
-	readonly Func<bool> _canExecute;
-	readonly Action _execute;
+	public event EventHandler? CanExecuteChanged;
+	readonly Func<bool>? canExecute;
+	readonly Action execute;
 
 	public RelayCommand(Action execute)
-		: this(null, execute)
 	{
+		this.execute = execute;
 	}
 
 	public RelayCommand(
 		Func<bool> canExecute
 		, Action execute)
 	{
-		_canExecute = canExecute;
-		_execute = execute;
+		this.canExecute = canExecute;
+		this.execute = execute;
 	}
 
-	public bool CanExecute(object parameter) => _canExecute == null || _canExecute.Invoke();
+    public void InvokeCanExecuteChanged()
+    {
+        CanExecuteChanged?.Invoke(this, new EventArgs());
+    }
 
-	public void Execute(object parameter) => _execute();
+	public bool CanExecute(object? parameter) => canExecute == null || canExecute.Invoke();
+
+	public void Execute(object? parameter) => execute();
 }
