@@ -4,17 +4,17 @@ namespace Pool.Logic;
 
 public class LogicEngine : ILogics
 {
-    private readonly IGameData _gameData;
-    private readonly List<IBinaryLogic> _binaryLogics;
-    private readonly List<IShapesLogic> _listLogics;
+    private readonly IGameData gameData;
+    private readonly List<IBinaryLogic> binaryLogics;
+    private readonly List<IShapesLogic> listLogics;
 
     public LogicEngine(IGameData data,
         List<IBinaryLogic> binaryLogics,
         List<IShapesLogic> listLogics)
     {
-        _gameData = data;
-        _binaryLogics = binaryLogics;
-        _listLogics = listLogics;
+        gameData = data;
+        this.binaryLogics = binaryLogics;
+        this.listLogics = listLogics;
     }
 
     public void RunLogics(
@@ -27,19 +27,19 @@ public class LogicEngine : ILogics
     private void CalculateListLogic(
         double frameDeltaTime)
     {
-        foreach (var logic in _listLogics)
+        foreach (var logic in listLogics)
         {
             logic.ShapesLogic(
-                _gameData.Circles,
+                gameData.Circles,
                 frameDeltaTime,
-                _gameData);
+                gameData);
         }
     }
 
     private void CalculateBinaryLogic(
         double frameDeltaTime)
     {
-        foreach (var strategy in _binaryLogics)
+        foreach (var strategy in binaryLogics)
         {
             if (!(strategy is CircleInSink)) continue;
             CalculateCircleInSinkLogic(strategy, frameDeltaTime);
@@ -50,11 +50,11 @@ public class LogicEngine : ILogics
         IBinaryLogic circleInSinkLogic,
         double frameDeltaTime)
     {
-        foreach (var circle in _gameData.Circles)
+        foreach (var circle in gameData.Circles)
         {
-            foreach (var sink in _gameData.Sinks)
+            foreach (var sink in gameData.Sinks)
             {
-                circleInSinkLogic.BinaryLogic(circle, sink, frameDeltaTime, _gameData);
+                circleInSinkLogic.BinaryLogic(circle, sink, frameDeltaTime, gameData);
             }
         }
     }

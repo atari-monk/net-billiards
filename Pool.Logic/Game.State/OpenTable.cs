@@ -2,10 +2,11 @@ using Sim.Core;
 
 namespace Pool.Logic;
 
-public class OpenTable : GameState
+public class OpenTable
+    : GameState
 {
-    private int _beforeTurnScore = 0;
-    private int _turnScore = 0;
+    private int beforeTurnScore = 0;
+    private int turnScore = 0;
 
     public OpenTable(IGameState state)
         : this(state.Game) => DoBeforeTurn();
@@ -16,18 +17,20 @@ public class OpenTable : GameState
 
     public override void DoBeforeTurn()
     {
+        ArgumentNullException.ThrowIfNull(Game);
         if (Game.PlayerMenager.PlayerInCurrentRound == Game.PlayerMenager.PlayerOne)
             Game.SetPlayer1Stats(new PlayerStats { State = "Open table" });
         else
             Game.SetPlayer2Stats(new PlayerStats { State = "Open table" });
         Game.GameCanvas.GameInputEvent += Game.PlayerMove;
-        _beforeTurnScore =
+        beforeTurnScore =
             Game.ScoredBilliardBalls.Count(ball => ball.TextFlag == "full") +
             Game.ScoredBilliardBalls.Count(ball => ball.TextFlag == "stripe");
     }
 
     public override void DoAfterTurn()
     {
+        ArgumentNullException.ThrowIfNull(Game);
         if (Game.PlayerMenager.PlayerInCurrentRound == Game.PlayerMenager.PlayerOne)
             Game.SetPlayer1Stats(new PlayerStats { State = "" });
         else
@@ -37,10 +40,11 @@ public class OpenTable : GameState
 
     public override void DoAfterFoul()
     {
-        _turnScore =
+        ArgumentNullException.ThrowIfNull(Game);
+        turnScore =
             Game.ScoredBilliardBalls.Count(a => a.TextFlag == "full") +
             Game.ScoredBilliardBalls.Count(a => a.TextFlag == "stripe")
-            - _beforeTurnScore;
+            - beforeTurnScore;
         if (Game.FaulState is FixedFaul)
         {
             Game.PlayerMenager.SwitchCurrentRoundPlayer();
@@ -49,9 +53,11 @@ public class OpenTable : GameState
         }
         else if (Game.FaulState is NoFaul)
         {
-            if (_turnScore > 0)
+            if (turnScore > 0)
             {
-                Game.PlayerMenager.OpenTable(Game.ScoredBilliardBalls[Game.ScoredBilliardBalls.Count - _turnScore].TextFlag);
+                var flag = Game!.ScoredBilliardBalls[Game.ScoredBilliardBalls.Count - turnScore].TextFlag;
+                ArgumentNullException.ThrowIfNull(flag);
+                Game.PlayerMenager.OpenTable(flag);
                 Game.SetTurnState(this);
             }
             else

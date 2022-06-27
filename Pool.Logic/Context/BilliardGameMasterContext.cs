@@ -4,26 +4,29 @@ using Sim.Core;
 
 namespace Pool.Logic;
 
-public class BilliardGameMasterContext : BilliardGameContext, IBilliardGameMasterContext
+public class BilliardGameMasterContext
+    : BilliardGameContext
+        , IBilliardGameMasterContext
 {
-    private readonly IGameStateFactory _gameStateFactory;
-    private readonly IFaulStateFactory _faulStateFactory;
-    private readonly IShapeFactory _shapeFactory;
-
     private const string WhiteBallTextFlag = "white";
-    private const string BlackBallTextFlag = "black";
+    private const string BlackBallTextFlag = "black";    
+
+    private readonly IGameStateFactory gameStateFactory;
+    private readonly IFaulStateFactory faulStateFactory;
+    private readonly IShapeFactory shapeFactory;
 
     public IGameState State { get; set; }
 
-    public IFaulState FaulState { get; set; }
+    public IFaulState? FaulState { get; set; }
 
-    public IFaulState LastFaulState { get; set; } = null;
+    public IFaulState? LastFaulState { get; set; } = null;
 
     public IBilliardPlayerManager PlayerMenager { get; set; }
 
-    public List<IFaulState> Fauls { get; set; }
+    public List<IFaulState>? Fauls { get; set; }
 
-    public BilliardGameMasterContext(IGameData data
+    public BilliardGameMasterContext(
+        IGameData data
         , IPhysics physic
         , ICanvasSerializaton<IShape> canvas
         , IBilliardPlayerManager billiardPlayerManager
@@ -32,38 +35,51 @@ public class BilliardGameMasterContext : BilliardGameContext, IBilliardGameMaste
         , IShapeFactory shapeFactory
         , IFaulStateFactory faulStateFactory
         , ILoggerToMemory logger)
-        : base(data, physic, canvas, movementFactory, logger)
+            : base(data, physic, canvas, movementFactory, logger)
     {
-        _gameStateFactory = gameStateFactory;
-        _faulStateFactory = faulStateFactory;
-        _shapeFactory = shapeFactory;
+        this.gameStateFactory = gameStateFactory;
+        this.faulStateFactory = faulStateFactory;
+        this.shapeFactory = shapeFactory;
         PlayerMenager = billiardPlayerManager;
-
-        State = _gameStateFactory.GetBreak(this);
+        State = this.gameStateFactory.GetBreak(this);
         EndTurnEvent += HandleAfterTurn;
         SetInitialFaulState();
     }
 
     public void SetScoreInfo()
     {
-        SetPlayer1Stats(new PlayerStats { Score = ScoredBilliardBalls.Count(ball => ball.TextFlag == PlayerMenager.PlayerOne.Color).ToString() });
-        SetPlayer2Stats(new PlayerStats { Score = ScoredBilliardBalls.Count(ball => ball.TextFlag == PlayerMenager.PlayerTwo.Color).ToString() });
+        SetPlayer1Stats(
+            new PlayerStats 
+                { 
+                    Score = ScoredBilliardBalls.Count(
+                        ball => ball.TextFlag == PlayerMenager?.PlayerOne?.Color).ToString() 
+                });
+        SetPlayer2Stats(
+            new PlayerStats 
+                { 
+                    Score = ScoredBilliardBalls.Count(
+                        ball => ball.TextFlag == PlayerMenager?.PlayerTwo?.Color).ToString()
+                });
     }
 
-    public void RestoreBlackBallAfterScoringIt(object sender, MouseButtonEventArgs mouseArgs)
+    public void RestoreBlackBallAfterScoringIt(object? sender, MouseButtonEventArgs mouseArgs)
     {
-        var massCenter = mouseArgs.GetPosition((UIElement)sender);
-        var newBlackBall = _shapeFactory.GetBlackBall(massCenter);
+        ArgumentNullException.ThrowIfNull(sender);
+        var uiElement = (UIElement)sender;
+        var massCenter = mouseArgs.GetPosition(uiElement);
+        var newBlackBall = shapeFactory.GetBlackBall(massCenter);
         GameData.Shapes.Add(newBlackBall);
         var black = ScoredBilliardBalls.First(ball => ball.TextFlag == BlackBallTextFlag);
         ScoredBilliardBalls.Remove(black);
         GameCanvas.GameInputEvent -= RestoreBlackBallAfterScoringIt;
     }
 
-    public void RestoreWhiteBallAfterScoringIt(object sender, MouseButtonEventArgs mouseArgs)
+    public void RestoreWhiteBallAfterScoringIt(object? sender, MouseButtonEventArgs mouseArgs)
     {
-        var massCenter = mouseArgs.GetPosition((UIElement)sender);
-        var newWhiteBall = _shapeFactory.GetWhiteBall(massCenter);
+        ArgumentNullException.ThrowIfNull(sender);
+        var uiElement = (UIElement)sender;
+        var massCenter = mouseArgs.GetPosition(uiElement);
+        var newWhiteBall = shapeFactory.GetWhiteBall(massCenter);
         GameData.Shapes.Add(newWhiteBall);
         var white = ScoredBilliardBalls.First(ball => ball.TextFlag == WhiteBallTextFlag);
         ScoredBilliardBalls.Remove(white);
@@ -77,6 +93,7 @@ public class BilliardGameMasterContext : BilliardGameContext, IBilliardGameMaste
     public override IShape GetPlayer()
     {
         var player = GameData.Circles.Find(ball => ball.TextFlag == WhiteBallTextFlag);
+        ArgumentNullException.ThrowIfNull(player);
         return player;
     }
 
@@ -87,6 +104,7 @@ public class BilliardGameMasterContext : BilliardGameContext, IBilliardGameMaste
 
     public void FixFaul()
     {
+        ArgumentNullException.ThrowIfNull(Fauls);
         var isFaul = false;
         foreach (var faul in Fauls)
         {
@@ -97,7 +115,7 @@ public class BilliardGameMasterContext : BilliardGameContext, IBilliardGameMaste
                 break;
             }
         }
-        FaulState.FixFaul();
+        FaulState?.FixFaul();
         if (!isFaul)
         {
             RestoreFaulState();
@@ -109,27 +127,27 @@ public class BilliardGameMasterContext : BilliardGameContext, IBilliardGameMaste
         SetPlayer1Stats(new PlayerStats { Faul = "" });
         SetPlayer2Stats(new PlayerStats { Faul = "" });
         if (LastFaulState == null)
-            FaulState = _faulStateFactory.GetNoFaul(this);
-        else FaulState = _faulStateFactory.GetFixedFaul(this);
+            FaulState = faulStateFactory.GetNoFaul(this);
+        else FaulState = faulStateFactory.GetFixedFaul(this);
     }
 
     private void SetInitialFaulState()
     {
         LastFaulState = null;
-        FaulState = _faulStateFactory.GetNoFaul(this);
+        FaulState = faulStateFactory.GetNoFaul(this);
     }
 
     public void HandleAfterTurn() => State.DoAfterTurn();
 
     public void SetBreakState(IGameState gameState) =>
-        State = _gameStateFactory.GetBreak(gameState);
+        State = gameStateFactory.GetBreak(gameState);
 
     public void SetOpenTableState(IGameState gameState) =>
-        State = _gameStateFactory.GetOpenTable(gameState);
+        State = gameStateFactory.GetOpenTable(gameState);
 
     public void SetTurnState(IGameState gameState) =>
-        State = _gameStateFactory.GetTurn(gameState);
+        State = gameStateFactory.GetTurn(gameState);
 
     public void SetWonState(IGameState gameState) =>
-        State = _gameStateFactory.GetWonGame(gameState);
+        State = gameStateFactory.GetWonGame(gameState);
 }

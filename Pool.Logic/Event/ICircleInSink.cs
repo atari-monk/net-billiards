@@ -2,7 +2,8 @@ using Sim.Core;
 
 namespace Pool.Logic;
 
-public interface ICircleInSink : IBinaryLogic
-	{
-		event Action<IShape> Scored;
-	}
+public interface ICircleInSink
+    : IBinaryLogic
+{
+    event Action<IShape> Scored;
+}
