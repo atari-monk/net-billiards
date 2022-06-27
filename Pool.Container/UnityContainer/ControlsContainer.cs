@@ -33,7 +33,6 @@ public class ControlsContainer
 	{
 		var control = Container.Resolve<ICanvasVisualControl<IShape>>();
 		var gameDate = Container.Resolve<IGameData>();
-
-		control.Canvas.Shapes.AddRange(gameDate.Shapes);
+		control?.Canvas?.Shapes?.AddRange(gameDate.Shapes);
 	}
 }
