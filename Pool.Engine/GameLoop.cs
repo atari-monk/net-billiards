@@ -44,7 +44,7 @@ public abstract class GameLoop
 
     private void InitilaizeLoopState()
     {
-        loopPauseTime = 0;
+        loopPauseTime = 5;
         frameCount = 0;
         previousFrameTime = 0;
         elapsedSeconds = 0;
@@ -57,11 +57,11 @@ public abstract class GameLoop
         Update(elapsedSeconds);
         Render();
         Thread.Sleep(loopPauseTime);
-        frameCount++;
         timer.Stop();
         elapsedSeconds = timer.ElapsedSeconds;
         timer.Reset();
         TimeTotal += elapsedSeconds;
+        frameCount++;
     }
 
     public abstract void ProcessInput();
@@ -85,7 +85,7 @@ public abstract class GameLoop
 
     private void SetPauseVale()
     {
-        if (FramesPerSecond > 50)
+        if (FramesPerSecond > 80)
             loopPauseTime += 1;
     }
 

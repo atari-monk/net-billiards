@@ -47,16 +47,16 @@ public class ShapeGameLoop
 		gameData.VectorAnalitics = new BlockingCollection<IShape>();
 		var physicsTask = Task.Factory.StartNew(() =>
 		{
-			Console.Write("producer starts\n");
+			//Console.Write("producer starts\n");
 			physics.RunPhysics(dt);
-			Console.Write("producer ends\n");
+			//Console.Write("producer ends\n");
 		});
 		physicsTask.Wait();
 		var logicTask = Task.Factory.StartNew(() =>
 		{
-			Console.Write("producer starts\n");
+			//Console.Write("producer starts\n");
 			logics.RunLogics(dt);
-			Console.Write("producer ends\n");
+			//Console.Write("producer ends\n");
 		});
 		logicTask.Wait();
 	}
@@ -65,10 +65,10 @@ public class ShapeGameLoop
 	{
 		var renderTask = Task.Factory.StartNew(() =>
 		{
-			Console.Write("consumer starts\n");
+			//Console.Write("consumer starts\n");
 			canvas.RunDispatcher(Draw);
-			Console.Write("consumed sum = {0}");
-			Console.Write("\nconsumer ends\n");
+			//Console.Write("consumed sum = {0}");
+			//Console.Write("\nconsumer ends\n");
 		});
 		renderTask.Wait();
 	}
