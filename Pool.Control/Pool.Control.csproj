@@ -2,9 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
-	<Nullable>enable</Nullable>
-	<ImplicitUsings>enable</ImplicitUsings>
+	  <Nullable>enable</Nullable>
+	  <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <RestoreSources>$(RestoreSources);C:\atari-monk\nugets;https://api.nuget.org/v3/index.json</RestoreSources>
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,23 +35,9 @@
     </Page>
   </ItemGroup>
 
-      <!-- Debug refs -->
-	<!-- <ItemGroup>
-		<Reference Include="Vector.Lib">
-			<HintPath>..\..\vector-lib\Vector.Lib\bin\Debug\net6.0\Vector.Lib.dll</HintPath>
-		</Reference>
-        <Reference Include="Sim.Core">
-			<HintPath>..\..\sim-core\Sim.Core\bin\Debug\net6.0\Sim.Core.dll</HintPath>
-		</Reference>
-	</ItemGroup> -->
-
-	<!-- Release refs -->
-	<ItemGroup>
-		<Reference Include="Vector.Lib">
-			<HintPath>..\..\..\Build\vector-lib\Vector.Lib\Vector.Lib.dll</HintPath>
-		</Reference>
-        <Reference Include="Sim.Core">
-			<HintPath>..\..\..\Build\sim-core\Sim.Core\Sim.Core.dll</HintPath>
-		</Reference>
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Vector.Lib" Version="1.0.0"/>
+    <PackageReference Include="Sim.Core" Version="1.0.0"/>
+  </ItemGroup>
+	
 </Project>

@@ -6,9 +6,14 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
+        <RestoreSources>$(RestoreSources);C:\atari-monk\nugets;https://api.nuget.org/v3/index.json</RestoreSources>
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Vector.Lib" Version="1.0.0"/>
+        <PackageReference Include="Sim.Core" Version="1.0.0"/>
+        <PackageReference Include="Canvas" Version="1.0.0"/>
+        <PackageReference Include="Shape.Model" Version="1.0.0"/>
         <PackageReference Include="Unity" Version="5.11.10" />
     </ItemGroup>
 
@@ -16,19 +21,4 @@
         <ProjectReference Include="..\Pool.Container\Pool.Container.csproj" />
     </ItemGroup>
 
-    <!-- Release refs -->
-	<ItemGroup>
-		<Reference Include="Vector.Lib">
-			<HintPath>..\..\..\Build\vector-lib\Vector.Lib\Vector.Lib.dll</HintPath>
-		</Reference>
-        <Reference Include="Sim.Core">
-			<HintPath>..\..\..\Build\sim-core\Sim.Core\Sim.Core.dll</HintPath>
-		</Reference>
-        <Reference Include="Canvas">
-			<HintPath>..\..\..\Build\canvas\Canvas\Canvas.dll</HintPath>
-		</Reference>
-        <Reference Include="Shape.Model">
-			<HintPath>..\..\..\Build\shape-model\Shape.Model\Shape.Model.dll</HintPath>
-		</Reference>
-	</ItemGroup>
 </Project>
